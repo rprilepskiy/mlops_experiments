@@ -1,0 +1,15 @@
+stages:
+  feature_generation:
+    cmd: python feature_generation.py
+    deps:
+    - data/audit_data.csv
+    - feature_generation.py
+    outs:
+    - data/feature_generated.csv
+  model_train:
+    cmd: python model_train.py
+    deps:
+    - data/feature_generated.csv
+    - model_train.py
+    outs:
+    - catboostmodel.cbm

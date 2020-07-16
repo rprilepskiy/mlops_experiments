@@ -1,0 +1,20 @@
+feature_generation:
+  cmd: python feature_generation.py
+  deps:
+  - path: data/audit_data.csv
+    md5: d2a564e563a5fbae65504e2744cc10f3
+  - path: feature_generation.py
+    md5: 745216b6623d871049fedde5317ae695
+  outs:
+  - path: data/feature_generated.csv
+    md5: 2aa6a43f2540ab5c3a0fe43623bea527
+model_train:
+  cmd: python model_train.py
+  deps:
+  - path: data/feature_generated.csv
+    md5: 2aa6a43f2540ab5c3a0fe43623bea527
+  - path: model_train.py
+    md5: 714ce3833ff0721e17ad9ae5e7feb7c8
+  outs:
+  - path: catboostmodel.cbm
+    md5: 3e0cb1040043c72392c422a3b4daa6b6
